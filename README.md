@@ -1,8 +1,10 @@
 # IcebergAppBot Clicker
 
 [![Static Badge](https://img.shields.io/badge/Telegram-Bot%20Link-Link?style=for-the-badge&logo=Telegram&logoColor=white&logoSize=auto&color=blue)](https://t.me/IcebergAppBot?start=referral_896333795)
-
+#### Join my [Telegram channel](https://t.me/scriptron). I will be posting news about new bots and scripts there.
 ## Important Notes
+
+> 🇪🇳 README на русском [тут](README-RU.md)
 
 - **Python Version:** The software runs on Python 3.10. Using a different version may cause errors.
 - DONT USE MAIN ACCOUNT BECAUSE THERE IS ALWAYS A CHANCE TO GET BANNED IN TELEGRAM
