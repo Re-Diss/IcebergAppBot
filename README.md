@@ -52,8 +52,6 @@ cd IcebergAppBot
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
-cp .env-example .env
-nano .env  # Here you must specify your API_ID and API_HASH, the rest is taken by default
 python3 main.py
 Next:
 - In the terminal, press 3 to create a new session
@@ -82,8 +80,6 @@ You can also use arguments for quick start, for example:
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-copy .env-example .env
-# Here you must specify your API_ID and API_HASH, the rest is taken by default
 python main.py
 Next:
 - In the terminal, press 3 to create a new session
