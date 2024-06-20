@@ -37,7 +37,7 @@ Before you begin, make sure you have the following installed:
 ## Obtaining API Keys
 1. Go to my.telegram.org and log in using your phone number.
 2. Select "API development tools" and fill out the form to register a new application.
-3. Record the API_ID and API_HASH provided after registering your application in the .env file.
+3. Record the API_ID and API_HASH provided after registering your application in the `data/config.py` file.
 
 ## Installation
 You can download the repository by cloning it to your system and installing the necessary dependencies:
@@ -55,6 +55,15 @@ pip3 install -r requirements.txt
 cp .env-example .env
 nano .env  # Here you must specify your API_ID and API_HASH, the rest is taken by default
 python3 main.py
+Next:
+- In the terminal, press 3 to create a new session
+- Enter the name of the session
+- Enter a proxy if necessary. If not necessary, press Enter
+- Enter the phone number
+- Enter the confirmation code
+- After successfully creating a session, we can add another one or press Enter to exit
+- Run python3 main.py again
+- Press 1 to start the bot
 ```
 
 You can also use arguments for quick start, for example:
@@ -76,6 +85,15 @@ pip install -r requirements.txt
 copy .env-example .env
 # Here you must specify your API_ID and API_HASH, the rest is taken by default
 python main.py
+Next:
+- In the terminal, press 3 to create a new session
+- Enter the name of the session
+- Enter a proxy if necessary. If not necessary, press Enter
+- Enter the phone number
+- Enter the confirmation code
+- After successfully creating a session, we can add another one or press Enter to exit
+- Run python main.py again
+- Press 1 to start the bot
 ```
 
 You can also use arguments for quick start, for example:
@@ -87,3 +105,8 @@ You can also use arguments for quick start, for example:
 # 1 - Run clicker
 # 2 - Get statistics
 # 3 - Create sessions
+```
+
+## Notes
+This bot does not need a .env file
+All data after creating a session is saved in the sessions folder. In the accounts.json file, you can edit the proxies, insert new ones if the old ones do not work.
