@@ -16,23 +16,23 @@ async def start(thread: int, session_name: str, phone_number: str, proxy: [str, 
         while True:
             start_time, stop_time = await iceberg.get_farming()
 
-            tasks = await iceberg.get_tasks()
-            for task in tasks:
-                if task['description'] in config.BLACKLIST_TASKS:
-                    continue
-                if task['status'] == 'new':
-                    await iceberg.change_status(task['id'], 'in_work')
-                    await iceberg.change_status(task['id'], 'ready_collect')
-                    await iceberg.change_status(task['id'], 'collected')
-                elif task['status'] == 'in_work':
-                    await iceberg.change_status(task['id'], 'ready_collect')
-                    await iceberg.change_status(task['id'], 'collected')
-                elif task['status'] == 'ready_collect':
-                    await iceberg.change_status(task['id'], 'collected')
-                else:
-                    continue
-                logger.success(f'Thread {thread} | {account} | Completed task «{task["description"]}»')
-                await asyncio.sleep(1)
+            # tasks = await iceberg.get_tasks()
+            # for task in tasks:
+            #     if task['description'] in config.BLACKLIST_TASKS:
+            #         continue
+            #     if task['status'] == 'new':
+            #         await iceberg.change_status(task['id'], 'in_work')
+            #         await iceberg.change_status(task['id'], 'ready_collect')
+            #         await iceberg.change_status(task['id'], 'collected')
+            #     elif task['status'] == 'in_work':
+            #         await iceberg.change_status(task['id'], 'ready_collect')
+            #         await iceberg.change_status(task['id'], 'collected')
+            #     elif task['status'] == 'ready_collect':
+            #         await iceberg.change_status(task['id'], 'collected')
+            #     else:
+            #         continue
+            #     logger.success(f'Thread {thread} | {account} | Completed task «{task["description"]}»')
+            #     await asyncio.sleep(1)
 
             if start_time is None and stop_time is None:
                 await iceberg.start_farming()
