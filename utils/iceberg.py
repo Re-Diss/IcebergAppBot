@@ -62,14 +62,14 @@ class IcebergBot:
     async def stats(self):
         await self.login()
 
-        r = await (await self.session.get("https://0xiceberg.store/api/v1/web-app/balance/", proxy=self.proxy)).json()
+        r = await (await self.session.get("https://0xiceberg.com/api/v1/web-app/balance/", proxy=self.proxy)).json()
 
         balance = r.get('amount')
         referral_link = "https://t.me/IcebergAppBot?start=referral_" + str(r.get("owner"))
 
         await asyncio.sleep(random.uniform(5, 7))
 
-        r = await (await self.session.get("https://0xiceberg.store/api/v1/web-app/referral/?page=1&page_size=15", proxy=self.proxy)).json()
+        r = await (await self.session.get("https://0xiceberg.com/api/v1/web-app/referral/?page=1&page_size=15", proxy=self.proxy)).json()
         referrals = r.get('count')
 
         await self.logout()
@@ -104,7 +104,7 @@ class IcebergBot:
         return True
 
     async def get_farming(self):
-        resp = await self.session.get('https://0xiceberg.store/api/v1/web-app/farming/', proxy=self.proxy)
+        resp = await self.session.get('https://0xiceberg.com/api/v1/web-app/farming/', proxy=self.proxy)
 
         if not await resp.text():
             return None, None
@@ -116,7 +116,7 @@ class IcebergBot:
         return self.iso_to_unix_time(start_time), self.iso_to_unix_time(stop_time)
 
     async def start_farming(self):
-        resp = await self.session.post('https://0xiceberg.store/api/v1/web-app/farming/', proxy=self.proxy)
+        resp = await self.session.post('https://0xiceberg.com/api/v1/web-app/farming/', proxy=self.proxy)
         resp_json = await resp.json()
 
         start_time = resp_json.get('start_time')
@@ -125,18 +125,18 @@ class IcebergBot:
         return self.iso_to_unix_time(start_time), self.iso_to_unix_time(stop_time)
 
     async def claim_points(self):
-        resp = await self.session.delete('https://0xiceberg.store/api/v1/web-app/farming/collect/', proxy=self.proxy)
+        resp = await self.session.delete('https://0xiceberg.com/api/v1/web-app/farming/collect/', proxy=self.proxy)
         return resp.status == 201, (await resp.json()).get('amount')
 
     async def change_status(self, task_id: int, status: str):
         await asyncio.sleep(random.uniform(*config.DELAYS['CHANGE_STATUS_TASK']))
         json_data = {"status": status}
-        resp = await self.session.patch(f'https://0xiceberg.store/api/v1/web-app/tasks/task/{task_id}/', json=json_data, proxy=self.proxy)
+        resp = await self.session.patch(f'https://0xiceberg.com/api/v1/web-app/tasks/task/{task_id}/', json=json_data, proxy=self.proxy)
 
         return (await resp.json()).get('success')
 
     async def get_tasks(self):
-        resp = await self.session.get('https://0xiceberg.store/api/v1/web-app/tasks/', proxy=self.proxy)
+        resp = await self.session.get('https://0xiceberg.com/api/v1/web-app/tasks/', proxy=self.proxy)
         return await resp.json()
 
     async def get_tg_web_data(self):
@@ -151,7 +151,7 @@ class IcebergBot:
                 bot=await self.client.resolve_peer('IcebergAppBot'),
                 platform='android',
                 from_bot_menu=False,
-                url='https://0xiceberg.store/webapp/'
+                url='https://0xiceberg.com/webapp/'
             ))
             await self.client.disconnect()
             auth_url = web_view.url
